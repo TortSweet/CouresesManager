@@ -1,0 +1,20 @@
+﻿@model CoursesApp.Models.Dtos.StudGroupDto
+@{
+    ViewData["Title"] = "EditGroup";
+}
+
+<h1>EditGroup</h1>
+
+@using (Html.BeginForm("EditGroup", "Group", FormMethod.Post, Model))
+{
+    @Html.HiddenFor(model => model.GroupId)
+    <div class="group">
+        <p>
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name)
+        </p>
+    </div>
+    <p>
+        <button type="submit">Save</button>
+    </p>
+}

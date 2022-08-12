@@ -1,0 +1,15 @@
+﻿@model IEnumerable<CoursesApp.Models.Dtos.CourseDto>
+@{
+    ViewData["Title"] = "AddCourse";
+}
+
+<h1>Add Course</h1>
+@using (Html.BeginForm("AddCourse", "Course", FormMethod.Post))
+{
+    <input type="hidden"/>
+    <p>Введите свое название:</p>
+    @Html.TextBox("Name", "Введите название")
+    <p>Введите описание:</p>
+    @Html.TextBox("Description", "Введите описание")
+    <p><input type="submit" value="Отправить" /></p>
+}

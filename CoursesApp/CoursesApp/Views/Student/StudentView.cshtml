@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CoursesApp.Models.Dtos.StudentDto>
+@{
+    ViewData["Title"] = "StudentView";
+}
+
+<h1>StudentView</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.StudentId)</th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+            <th align="center">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+    <div>
+        @Html.ActionLink(
+            "Add student", 
+            "AddStudentView", 
+            "Student", 
+            new { groupId = Context.Request.Query["groupId"] })
+    </div>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.StudentId)</td>
+        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+        <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+        <td>
+            <p>
+                @Html.ActionLink(
+                    "Edit student", 
+                    "EditStudentView", 
+                    "Student", 
+                    new { item.StudentId })
+            </p>
+            <p>
+                @Html.ActionLink(
+                    "Delete student", 
+                    "DeleteStudent", 
+                    "Student", 
+                    new { item.StudentId })
+            </p>
+        </td>
+    </tr>
+
+        }
+    </tbody>
+
+</table>
+
