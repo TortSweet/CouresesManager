@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CoursesApp.Models.Dtos.StudGroupDto>
+@{
+    ViewData["Title"] = "GroupView";
+}
+
+<h1>Groups view from course @Context.Request.Query[""]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.GroupId)</th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th align="center">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <div>
+            @Html.ActionLink(
+                "Add group", 
+                "AddGroupView", 
+                "Group", 
+                new {courseId = Context.Request.Query["courseId"]})
+
+        </div>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.GroupId)</td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>
+                    <p>
+                        @Html.ActionLink(
+                            "Show students", 
+                            "ShowStudentByGroupId", 
+                            "Student", 
+                            new { item.GroupId })
+                    </p>
+                    <p>
+                        @Html.ActionLink(
+                            "Edit group", 
+                            "EditGroupView", 
+                            "Group", 
+                            new { item.GroupId })
+                    </p>
+                    <p>
+                        @Html.ActionLink(
+                            "Delete group", 
+                            "DeleteGroup", 
+                            "Group", 
+                            new { item.GroupId })
+                    </p>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>
+

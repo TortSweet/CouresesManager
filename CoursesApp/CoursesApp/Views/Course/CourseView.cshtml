@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CoursesApp.Models.Dtos.CourseDto>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Courses view</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.CourseId)</th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th align="center">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+    <div>
+        @Html.ActionLink(
+            "Add course", 
+            "AddCourseView",
+            "Course",
+            FormMethod.Get)
+    </div>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.CourseId)</td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>
+                    <p>
+                        @Html.ActionLink(
+                            "Show groups", 
+                            "ShowGroupById", 
+                            "Group", 
+                            new { item.CourseId })
+                    </p>
+                    <p>
+                        @Html.ActionLink(
+                            "Edit course",
+                            "EditCourseView",
+                            "Course",
+                            new { item.CourseId })
+                    </p>
+                    <p>
+                        @Html.ActionLink(
+                            "Delete course", 
+                            "DeleteCourse", 
+                            "Course", 
+                            new { item.CourseId })
+                    </p>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>

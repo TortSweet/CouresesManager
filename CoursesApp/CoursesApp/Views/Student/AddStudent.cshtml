@@ -1,0 +1,23 @@
+﻿@model CoursesApp.Models.Dtos.StudentDto
+@{
+    ViewData["Title"] = "AddStudent";
+}
+
+<h1>AddStudent</h1>
+@using (Html.BeginForm("AddStudent", "Student", FormMethod.Post, Model))
+{
+    @Html.HiddenFor(model => model.GroupId)
+<div class="student">
+    <p>
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.LastName)
+        @Html.EditorFor(model => model.LastName)
+    </p>
+</div>
+    <p>
+        <button type="submit">Save</button>
+    </p>
+}

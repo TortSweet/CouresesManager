@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>This is a simple manager program for interacting with students, groups and courses.</p>
+    <div>
+        <p>
+            @Html.ActionLink("Show courses", "ShowCourses", "Course", FormMethod.Get)
+        </p>
+        <p>
+            @Html.ActionLink("Show groups", "ShowAllGroup", "Group", FormMethod.Get)
+        </p>
+        <p>
+            @Html.ActionLink("Show students", "ShowAllStudents", "Student", FormMethod.Get)
+        </p>
+    </div>
+</div>
